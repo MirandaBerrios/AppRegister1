@@ -1,0 +1,48 @@
+ion-content.background {
+    --background: url(../../../assets/img/login.jpg) 0 0/100% 100% no-repeat;
+}
+
+.bg-transparent {
+    opacity: 0.7;
+}
+
+ion-card {
+    margin-top: 300px;
+    height: 240px;
+    opacity: 0.6;
+}
+
+ion-card:focus-within {
+    opacity: 0.9;
+}
+
+.recuperar_clave {
+    padding-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block !important;
+    color: blue;
+    text-decoration: none;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block !important;
+}
+
+ion-toolbar {
+    --background: rgb(0, 61, 106);
+    --color: white;
+}
+.btn_ingresar{
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: medium;
+    font-weight: normal;
+}
+#textlbl{
+    padding-top: 1em;
+    padding-bottom: 0px;
+    font-size: medium;
+    color: black;
+}

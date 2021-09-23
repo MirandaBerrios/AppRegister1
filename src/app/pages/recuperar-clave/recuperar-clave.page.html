@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Recuperar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background"  [fullscreen]="true"> 
+ 
+ <ion-card   class="ion-text-center , mainCard , size">
+  <img src="../../../assets/img/duocLogo.png" alt="" width="200px" style="margin: 3px;">
+   <h2>Ingresa tu usuario para que podamos ayudarte a recuperar tu contraseña</h2>
+   <br><br><br>
+   <ion-item>
+    <ion-label position="left">Usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.nombreUsuario" placeholder="usuario@duocuc.cl"></ion-input>
+  </ion-item>
+   <ion-button class="btn_password" (click)="showPass()" expand="block" fill="clear" shape="round" style="--background: #F9B901; color:black">
+     recuperar contraseña
+   </ion-button>
+ </ion-card>
+ <ion-item lines="none" class="showPass" *ngIf="show" >
+  <p class="center">tu clave es : {{usuario.password}}</p>
+</ion-item>
+</ion-content>
+
+
