@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="ion-text-center">
     <ion-title>
-        <ion-label>¡Bienvenido @{{usuario.nombreUsuario}}!</ion-label>
+        <ion-label class="titulo">¡Bienvenido @{{usuario.nombreUsuario}}!</ion-label>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,12 +16,12 @@
 </ion-content> -->
 
 <ion-content>
-  <ion-item  lines="none" style="min-height: 120px;" class="ion-padding-top">
+  <ion-item  lines="none" style="min-height: 120px;" class="ion-padding-top" >
     <ion-avatar slot="start" style="min-height: 80px; min-width: 80px;">
       <img src="../../../assets/img/profile2.jfif" style="height: 80px; width: 80px;" />
     </ion-avatar>
-    <ion-label>
-      <h2>Hugh Jackman Rodriguez</h2>
+    <ion-label >
+      <h2 id="nombreUsuario">Hugh Jackman Rodriguez</h2>
       <h3>Ingeniería en ser rico</h3>
       
     </ion-label>
@@ -42,7 +42,7 @@
   </ion-item>
 
 
-  <ion-card class="ion-padding-vertical">
+  <ion-card class="ion-padding-vertical"  @llamarAnimacion>
     <ion-item>
       <ion-label>
         <ion-row>

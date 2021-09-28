@@ -6,12 +6,20 @@ import { Usuario } from '../../model/Usuario';
 import { NivelEducacional } from '../../model/NivelEducacional';
 import { Persona } from '../../model/Persona';
 import { ToastController } from '@ionic/angular';
+import { Animation , AnimationController  } from '@ionic/angular';
+import { transition, animate, style, trigger, state} from '@angular/animations';
+import { posix } from 'path';
 
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  animations: [
+    trigger('llamarAnimacion'
+    ,[state('void'
+    ,style({transform: 'translateX(-100%)',opacity:0}))
+    ,transition(':enter',[animate(600,style({transform: 'translateX(0)',opacity:1}))])])]
 })
 
 export class HomePage implements OnInit {
@@ -44,7 +52,11 @@ export class HomePage implements OnInit {
         private activeroute: ActivatedRoute
       , private router: Router
       , private toastController: ToastController
+      , private animationCtrl : AnimationController
+       
       ) {
+        
+        
         
     // Se llama a la ruta activa y se obtienen sus parámetros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => {       // Utilizamos expresión lambda
@@ -65,14 +77,34 @@ export class HomePage implements OnInit {
   });
 
   
+  
 
 }
+  
+  
 
 public ngOnInit() {
+  const animation : Animation = this.animationCtrl.create()
+  .addElement(document.querySelector('.titulo'))
+  .duration(2000)
+  .iterations(Infinity)
+  .fromTo('opacity', '1','0.2')
   
-  
-}
+  const movName : Animation = this.animationCtrl.create()
+        .addElement(document.querySelector('#nombreUsuario'))
+        .duration(2000)
+        .iterations(2)
+        .from('transform', 'translateX(100%)')
 
+  animation.play();
+  movName.play(); 
+
+  
+    
+}
+ public ngOnDestroy(){
+   
+ }
 
   public registrar_asistencia(): void {      
     this.router.navigate(['/scan']); 
