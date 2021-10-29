@@ -28,49 +28,49 @@ export class RecuperarClavePage implements OnInit {
   ngOnInit() {
   }
   
-  public showPass(): void {
-    this.show = false;
-    if(!this.validarUsuario(this.usuario)) {
-      return;
-    }
-    if(this.usuario.nombreUsuario === 'jorge'){
-    this.usuario.password = '1111';
-    this.show = true;
+  // public showPass(): void {
+  //   this.show = false;
+  //   if(!this.validarUsuario(this.usuario)) {
+  //     return;
+  //   }
+  //   if(this.usuario.nombreUsuario === 'jorge'){
+  //   this.usuario.password = '1111';
+  //   this.show = true;
 
-    }
-    else if(this.usuario.nombreUsuario === 'wolvering'){
-      this.usuario.password = '2222';
-      this.show = true;
-    }
+  //   }
+  //   else if(this.usuario.nombreUsuario === 'wolvering'){
+  //     this.usuario.password = '2222';
+  //     this.show = true;
+  //   }
 
     
-  }
+  // }
 
-  public validarUsuario(usuario: Usuario): boolean {
+  // public validarUsuario(usuario: Usuario): boolean {
 
-    const mensajeError = usuario.validarNombreUsuario();
+  //   const mensajeError = usuario.validarNombreUsuario();
 
-    if (mensajeError) {
-      this.mostrarMensaje(mensajeError);
-      return false;
-    }
+  //   if (mensajeError) {
+  //     this.mostrarMensaje(mensajeError);
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
-  /**
-   * Muestra un toast al usuario
-   *
-   * @param mensaje Mensaje a presentar al usuario
-   * @param duracion Duración el toast, este es opcional
-   */
-  async mostrarMensaje(mensaje: string, duracion?: number) {
-    const toast = await this.toastController.create({
-        message: mensaje,
-        duration: duracion? duracion: 4000
-      });
-    toast.present();
-  }
+  // /**
+  //  * Muestra un toast al usuario
+  //  *
+  //  * @param mensaje Mensaje a presentar al usuario
+  //  * @param duracion Duración el toast, este es opcional
+  //  */
+  // async mostrarMensaje(mensaje: string, duracion?: number) {
+  //   const toast = await this.toastController.create({
+  //       message: mensaje,
+  //       duration: duracion? duracion: 4000
+  //     });
+  //   toast.present();
+  // }
 
 }
 

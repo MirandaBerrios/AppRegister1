@@ -9,12 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { Platform } from '@ionic/angular';
+import { QRScanner } from '@ionic-native/qr-scanner';
+import { Usuario } from './model/Usuario';
+import { Storage } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Usuario , Storage],
   bootstrap: [AppComponent],
 })
 export class AppModule {
@@ -45,12 +48,14 @@ export class AppModule {
               console.log('La tabla fue creada.');
 
               console.log('Insertar un nuevo registro a la tabla.');
-              db.executeSql('INSERT INTO usuarios VALUES(\'Jorge Miranda\')', [])
+              db.executeSql('DELETE FROM usuarios where nombre_usuario == (\'Jorge Miranda\')', [])
+              // db.executeSql('INSERT INTO usuarios VALUES(\'Jorge Miranda\')', [])
 
               .then(() => {
                 console.log('El registro nuevo fue insertado en la tabla.');
 
                 console.log('Seleccionar todos los registros de la tabla.');
+                
                 db.executeSql('SELECT * FROM usuarios', [])
 
                 .then((data) => {

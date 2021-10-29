@@ -4,7 +4,8 @@ import { Router, NavigationExtras } from '@angular/router';
 // La clase ToastController sirve para mostrar mensajes emergente que duran un par de segundos
 import { ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/Usuario';
-
+import { IsAuthenticateService } from 'src/app/services/is-authenticate.service';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,54 +15,68 @@ export class LoginPage implements OnInit {
  
   public usuario: Usuario;
  
-  constructor(private router: Router, private toastController: ToastController) {
+  errorMessage : String = "";
+  
+
+  constructor(private router: Router, 
+    private toastController: ToastController, 
+    private authService : IsAuthenticateService,
+    private storage : Storage) {
+
+    
     this.usuario = new Usuario();
-    this.usuario.nombreUsuario = '';
-    this.usuario.password = '';
+    
+    // this.usuario.nombreUsuario = '';
+    // this.usuario.password = '';
+
+    
   }
 
-  public ngOnInit(): void {
+  grabar_data(){
+    let usuario : Usuario = {
+      nombreUsuario: "mrgatita",
+      password : "1234"
+    }
+    this.storage.set("usuario" , Usuario); 
+  }
 
-    /*
-      Las siguientes 3 líneas de código sirven para lo siguiente:
-        Caso 1: Si las comentas, la página quedará lista para ingresar el nombre de usuario y la password
-        Caso 2: Si dejas las instrucciones sin comentar, entonces entrará inmediatamente a la página home,
-          usando el usuario por defecto "cgomezvega" con la password "123". Lo anterior es muy útil
-          para el caso en que ya quedó lista la página de login y me interesa probar las otras páginas,
-          de este modo se saltará el login y no tendrás que estar digitando los datos todo el tiempo.
-    */
-    //  this.usuario.nombreUsuario = 'wolvering';
-    //  this.usuario.password = '1234';
-    //  this.ingresar();
+  public ngOnInit():void {
+     
   }
 
   public ingresar(): void {
-
-    if(!this.validarUsuario(this.usuario)) {
-      return;
-    }
-
-    this.mostrarMensaje('¡Bienvenido!');
-
-    const navigationExtras: NavigationExtras = {
-      state: {
-        usuario: this.usuario
+    this.authService.loginUser(this.usuario).then(res => {
+      const navigationExtras : NavigationExtras = {
+        state:{ usuario : this.usuario}
       }
-    };
-    this.router.navigate(['/home'], navigationExtras); 
+      this.errorMessage = "";
+      this.mostrarMensaje('¡Bienvenido!');
+      this.router.navigate(['/home'], navigationExtras)
+    })
+    // if(!this.validarUsuario(this.usuario)) {
+    //   return;
+    // }
+
+
+    // const navigationExtras: NavigationExtras = {
+    //   state: {
+    //     usuario: this.usuario
+    //   }
+    // };
+    // this.router.navigate(['/home'], navigationExtras); 
   }
 
-  public validarUsuario(usuario: Usuario): boolean {
+  // public validarUsuario(usuario: Usuario): boolean {
 
-    const mensajeError = usuario.validarUsuario();
+  //   const mensajeError = usuario.validarUsuario();
 
-    if (mensajeError) {
-      this.mostrarMensaje(mensajeError);
-      return false;
-    }
+  //   if (mensajeError) {
+  //     this.mostrarMensaje(mensajeError);
+  //     return false;
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   /**
    * Muestra un toast al usuario

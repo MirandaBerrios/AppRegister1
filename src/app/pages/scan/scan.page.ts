@@ -24,7 +24,7 @@ export class ScanPage {
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private plt: Platform,
-    private qrScanner : QRScanner,
+    
   ) {
     const isInStandaloneMode = () =>
       'standalone' in window.navigator && window.navigator['standalone'];
@@ -34,7 +34,7 @@ export class ScanPage {
     }
   }
   public ngOnInit() {
-    this.qrScanner.prepare();
+  
   }
   ngAfterViewInit() {
     this.canvasElement = this.canvas.nativeElement;
