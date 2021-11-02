@@ -1,9 +1,10 @@
 
- var users = ["jorge" , "wolvering" ];
- var passwords = ["1111" , "2222"];
 export class Usuario {
   public nombreUsuario = '';
   public password = '';
+  public question = '';
+  public isActive = '';
+}
 
   
   // public validarNombreUsuario(): string {
@@ -43,4 +44,4 @@ export class Usuario {
   //   return this.validarNombreUsuario()
   //     || this.validarPassword();
   // }
-}
+

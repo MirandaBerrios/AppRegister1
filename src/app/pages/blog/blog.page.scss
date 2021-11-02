@@ -1,0 +1,23 @@
+ion-toolbar {
+    --background: rgb(0, 61, 106);
+    --color: white;
+}
+ion-button {
+    --color: white;
+    --background: rgb(0, 61, 106);
+    height: 4em;
+}
+
+.feed_img {
+    height: 200px;
+    width: 80%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+
+#fecha_publicacion{
+    margin-left: 1em;
+    color: lightgrey;
+}

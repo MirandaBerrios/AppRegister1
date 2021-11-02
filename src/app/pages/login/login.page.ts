@@ -6,6 +6,7 @@ import { ToastController } from '@ionic/angular';
 import { Usuario } from 'src/app/model/Usuario';
 import { IsAuthenticateService } from 'src/app/services/is-authenticate.service';
 import { Storage } from '@ionic/storage';
+import { StorageService } from 'src/app/services/storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
   constructor(private router: Router, 
     private toastController: ToastController, 
     private authService : IsAuthenticateService,
-    private storage : Storage) {
+    private storage : Storage,
+    private storageServices : StorageService) {
 
     
     this.usuario = new Usuario();
@@ -31,14 +33,15 @@ export class LoginPage implements OnInit {
 
     
   }
-
-  grabar_data(){
-    let usuario : Usuario = {
-      nombreUsuario: "mrgatita",
-      password : "1234"
-    }
-    this.storage.set("usuario" , Usuario); 
-  }
+  // Intentamos grabar usuarios en el local storage para posteriormente utilizarlos en el services 
+  // para autenticarlos y luego seguir con el flujo
+  // grabar_data(){
+  //   let usuario : Usuario = {
+  //     nombreUsuario: "mrgatita",
+  //     password : "1234"
+  //   }
+  //   this.storage.set("kevin" , usuario); 
+  // }
 
   public ngOnInit():void {
      
@@ -51,7 +54,9 @@ export class LoginPage implements OnInit {
       }
       this.errorMessage = "";
       this.mostrarMensaje('¡Bienvenido!');
-      this.router.navigate(['/home'], navigationExtras)
+      this.router.navigate(['/home'], navigationExtras);
+      
+      this.storageServices.saveStorage(this.usuario);
     })
     // if(!this.validarUsuario(this.usuario)) {
     //   return;

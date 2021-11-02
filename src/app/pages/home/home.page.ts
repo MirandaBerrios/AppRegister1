@@ -109,7 +109,10 @@ public ngOnInit() {
   public registrar_asistencia(): void {      
     this.router.navigate(['/scan']); 
   }
-
+   
+  public visitar_blog(): void {
+    this.router.navigate(['/blog'])
+  }
 
   async mostrarMensaje(mensaje: string, duracion?: number) {
     const toast = await this.toastController.create({
