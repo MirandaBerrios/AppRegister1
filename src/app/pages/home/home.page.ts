@@ -9,6 +9,7 @@ import { ToastController } from '@ionic/angular';
 import { Animation , AnimationController  } from '@ionic/angular';
 import { transition, animate, style, trigger, state} from '@angular/animations';
 import { posix } from 'path';
+import { ApiConnectService } from 'src/app/services/api-connect.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { posix } from 'path';
 })
 
 export class HomePage implements OnInit {
-
+  userhtml = localStorage.getItem('nombreUsuario')
   public usuario: Usuario;
 
   public nivelesEducacionales: NivelEducacional[] = [
@@ -53,7 +54,7 @@ export class HomePage implements OnInit {
       , private router: Router
       , private toastController: ToastController
       , private animationCtrl : AnimationController
-       
+      , private apicon : ApiConnectService       
       ) {
         
         
@@ -111,7 +112,9 @@ public ngOnInit() {
   }
    
   public visitar_blog(): void {
-    this.router.navigate(['/blog'])
+    this.router.navigate(['/blog']);
+    
+
   }
 
   async mostrarMensaje(mensaje: string, duracion?: number) {
@@ -121,4 +124,11 @@ public ngOnInit() {
       });
     toast.present();
   }
+  
+  logout(){
+    localStorage.removeItem('isAuthenticate')
+    localStorage.removeItem('nombreUsuario')
+    this.router.navigate(['/login'])
+  }
+  
 }

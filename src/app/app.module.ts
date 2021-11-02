@@ -15,12 +15,18 @@ import { Storage } from '@ionic/storage';
 import { StorageService } from './services/storage.service';
 import { DbFuntionService } from './services/db-funtion.service';
 import { IsAuthenticateService } from './services/is-authenticate.service';
+import { ApiConnectService } from './services/api-connect.service';
+import { HttpClientModule} from '@angular/common/http'
+import { LoginGuardService } from './guards/login-guard.service';
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Usuario, Storage, StorageService , DbFuntionService , IsAuthenticateService , SQLite],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Usuario, Storage, StorageService , DbFuntionService , IsAuthenticateService , SQLite , ApiConnectService , LoginGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

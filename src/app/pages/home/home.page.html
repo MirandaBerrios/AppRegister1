@@ -2,7 +2,7 @@
   <ion-toolbar class="ion-text-center">
     <ion-title>
         
-        <ion-label class="titulo">¡Bienvenido @{{usuario.nombreUsuario}}!</ion-label>
+        <ion-label class="titulo">¡Bienvenido @{{userhtml}}!</ion-label>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -95,5 +95,8 @@
 
   </ion-card>
 
+  <ion-button (click)="logout()" expand="block" fill="clear" shape="round">
+    logout
+  </ion-button>
 
 </ion-content>

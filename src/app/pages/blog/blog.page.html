@@ -6,11 +6,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <ion-card >
     <img class="feed_img "  src="../../../assets/img/login.jpg" />
     <ion-card-header>
-      <ion-card-subtitle> @User name</ion-card-subtitle>
+      <ion-card-subtitle *ngFor = "let alumno of alumnos"> @{{alumno.nombre}}</ion-card-subtitle>
       <ion-card-title>Apunte </ion-card-title>
       
     </ion-card-header>
@@ -19,4 +19,8 @@
     </ion-card-content>
     <ion-card-subtitle id="fecha_publicacion">publicado xx/xx/xxxx</ion-card-subtitle>
   </ion-card>
+
+  <ion-button (click)="conexion()" expand="block" fill="clear" shape="round">
+    Click me
+  </ion-button>
 </ion-content>

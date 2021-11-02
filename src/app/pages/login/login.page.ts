@@ -56,7 +56,8 @@ export class LoginPage implements OnInit {
       this.mostrarMensaje('¡Bienvenido!');
       this.router.navigate(['/home'], navigationExtras);
       
-      this.storageServices.saveStorage(this.usuario);
+      
+      
     })
     // if(!this.validarUsuario(this.usuario)) {
     //   return;

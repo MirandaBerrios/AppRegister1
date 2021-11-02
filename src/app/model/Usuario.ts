@@ -3,7 +3,7 @@ export class Usuario {
   public nombreUsuario = '';
   public password = '';
   public question = '';
-  public isActive = '';
+  public isActive = 0;
 }
 
   
