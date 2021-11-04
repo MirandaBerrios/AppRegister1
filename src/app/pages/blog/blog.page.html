@@ -10,9 +10,9 @@
   <ion-card >
     <img class="feed_img "  src="../../../assets/img/login.jpg" />
     <ion-card-header>
-      <ion-card-subtitle *ngFor = "let alumno of alumnos"> @{{alumno.nombre}}</ion-card-subtitle>
-      <ion-card-title>Apunte </ion-card-title>
-      
+      <ion-card-subtitle > </ion-card-subtitle>
+      <ion-card-title> cuenta </ion-card-title>
+      <div *ngFor = "let x of alumnos"> @{{x.nombre }}</div>
     </ion-card-header>
     <ion-card-content>
      Contenido del apunte 
@@ -20,7 +20,7 @@
     <ion-card-subtitle id="fecha_publicacion">publicado xx/xx/xxxx</ion-card-subtitle>
   </ion-card>
 
-  <ion-button (click)="conexion()" expand="block" fill="clear" shape="round">
-    Click me
+  <ion-button (click)="get_all_blog()" expand="block" fill="clear" shape="round">
+    traer data
   </ion-button>
 </ion-content>

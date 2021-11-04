@@ -12,7 +12,7 @@ export class HomeGuard implements CanActivate {
   
   constructor( private usuario : Usuario , private authService : IsAuthenticateService){}
   canActivate(){
-    if(this.authService){
+    if(localStorage.getItem("isAuthenticate") == "1"){
       return true;
     }    
     else{

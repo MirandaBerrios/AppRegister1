@@ -27,16 +27,16 @@ export class HomePage implements OnInit {
   userhtml = localStorage.getItem('nombreUsuario')
   public usuario: Usuario;
 
-  public nivelesEducacionales: NivelEducacional[] = [
-    {id: 1, nombre: 'Básica Incompleta'},
-    {id: 2, nombre: 'Básica Completa'},
-    {id: 3, nombre: 'Media Incompleta'},
-    {id: 4, nombre: 'Media Completa'},
-    {id: 5, nombre: 'Superior Incompleta'},
-    {id: 6, nombre: 'Superior Completa'}
-  ];
+  // public nivelesEducacionales: NivelEducacional[] = [
+  //   {id: 1, nombre: 'Básica Incompleta'},
+  //   {id: 2, nombre: 'Básica Completa'},
+  //   {id: 3, nombre: 'Media Incompleta'},
+  //   {id: 4, nombre: 'Media Completa'},
+  //   {id: 5, nombre: 'Superior Incompleta'},
+  //   {id: 6, nombre: 'Superior Completa'}
+  // ];
 
-  public persona: Persona = new Persona();
+  // public persona: Persona = new Persona();
 
   /*
     En el constructor del HomePage se ponen como parametros los siguientes objetos:
