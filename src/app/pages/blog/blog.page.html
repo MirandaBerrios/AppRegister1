@@ -6,21 +6,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-card >
-    <img class="feed_img "  src="../../../assets/img/login.jpg" />
-    <ion-card-header>
-      <ion-card-subtitle > </ion-card-subtitle>
-      <ion-card-title> cuenta </ion-card-title>
-      <div *ngFor = "let x of alumnos"> @{{x.nombre }}</div>
+<ion-content id="input_update" >
+ 
+  <ion-card  style="color: rgb(0, 61, 106) ;" *ngFor= "let x of alumnos" class="feed_news">
+    <ion-label><h1>{{ x.nombre + "  " + x.apellido + " " + x.alumno_id}}</h1></ion-label>
+    <div >
+    <ion-card-header  style="color: rgb(0, 61, 106) ;" >
+      <h2 >{{x.publicacion}}</h2> 
     </ion-card-header>
-    <ion-card-content>
-     Contenido del apunte 
-    </ion-card-content>
-    <ion-card-subtitle id="fecha_publicacion">publicado xx/xx/xxxx</ion-card-subtitle>
+    <div id="posted">
+    <div style="margin-left: auto;">
+    <ion-icon  size="large" class="btns" name="pencil-outline"  (click) ="modificar_html()"></ion-icon>
+    <ion-icon  size="large" class="btns" (click) ="delete(x.alumno_id)"  name="trash-outline"></ion-icon>
+  </div>"
+  </div>
+</div>
+
+  <ion-label id="date">17:00 01-11-2021</ion-label>
   </ion-card>
 
-  <ion-button (click)="get_all_blog()" expand="block" fill="clear" shape="round">
-    traer data
-  </ion-button>
+  <ion-card class="send_coment">
+    <ion-label><h1>@{{user}}</h1></ion-label>
+    <div id="posted">
+    <ion-input  id="input_txt"type="text" placeholder="Escribe aquí tu aporte..."></ion-input>
+    <ion-icon size="large" id="btn_send" (click) ="xd()"  name="paper-plane-outline"></ion-icon>
+    </div>
+  </ion-card>
+
+
 </ion-content>

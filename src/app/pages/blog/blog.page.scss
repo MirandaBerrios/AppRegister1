@@ -21,3 +21,34 @@ ion-button {
     margin-left: 1em;
     color: lightgrey;
 }
+
+
+#posted{
+    display: flex;   
+}
+
+#input_txt{
+    font-size: large;
+}
+
+.feed_news{
+    background-color: rgb(255, 184, 0);
+    padding-top: 1em;  
+    padding-right: 1em   ;
+    padding-left: 1em;
+    margin-top: 1em;
+    
+}
+
+.send_coment{
+    background-color: rgb(0, 61, 106);
+    padding: 1em;
+    margin-top: 2em;
+    color: whitesmoke;
+}
+
+#date{
+    float: right;
+    margin-bottom: 0px ;
+}
+
