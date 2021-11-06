@@ -13,14 +13,24 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./blog.page.scss'],
 })
 export class BlogPage implements OnInit {
-  data_update = '';
+  public data_update = '';
   alumnos = []; 
   user = localStorage.getItem('nombreUsuario');
   datos : any;
+
+  data_lapiz = {
+    "alumno_id" : "",
+    "nombre" : "",
+    "apellido" : "",
+    "contrasena" : "",
+    "isAuthenticate" : "",
+    "publicacion" : ""
+  }
+
   constructor(public apicon : ApiConnectService , public router : Router ) {
     
    }
-    url = 'https://b568-2803-c180-2002-97a2-5db5-beee-ee94-a1.ngrok.io'+'/postalumno';
+    url = 'https://544a-2803-c180-2002-97a2-4557-f964-9353-8450.ngrok.io'+'/postalumno';
   ngOnInit() {
     this.get_all_blog()
       
@@ -56,31 +66,30 @@ export class BlogPage implements OnInit {
     });  
   }
    
-  update(id, nombre , apellido, contrasena , isAuthenticate){
-    if(this.data_update.length > 0){
-      console.log("entra")
+  update(){
+    this.data_update =   ((document.getElementById("datoUpdate") as HTMLInputElement).value) ;
+    console.log("any?");
+    let dl = this.data_lapiz
     fetch(
-      this.url + "/" + id, {
+      this.url + "/" + dl.alumno_id, {
      method: 'PUT',
      headers: new Headers({
        'Content-Type': 'application/json', 'access-control-allow-origin': '*'
      }),
-     body: JSON.stringify({"alumno_id": id , "nombre" : nombre, "apellido" : apellido , "contrasena": contrasena , "publicacion" : this.data_update , "isAuthenticate":isAuthenticate})
+     body: JSON.stringify({"publicacion" : this.data_update})
      }).then(()=>
      location.reload());
      
-    }else{
-      console.log(this.data_update);
-      console.log('no entra al fetch')
-    }
+     
   }
 
 
   modificar_html(){ 
     
     const data = document.getElementById('input_update');
-    let HtmlString = '<ion-card style="color: rgb(0, 61, 106) ;" *ngFor= "let x of alumnos" class="feed_news"><ion-label><h1>{{ x.nombre + "  " + x.apellido + " " + x.alumno_id}}</h1></ion-label><div  style="display: flex;"><ion-input style="font-size: large; color:rgb(0, 61, 106);" [(ngModel)]="data_update" type="text" placeholder="Actualiza los datos"></ion-input><ion-icon size="large" id="btn_send" (click) ="update(x.alumno_id,x.nombre,x.apellido, x.contrasena,  x.isAuthenticate )"  name="paper-plane-outline"></ion-icon></div>  <ion-label id="date">17:00 01-11-2021</ion-label></ion-card>' 
+    let HtmlString = '<ion-card style="color: rgb(0, 61, 106) ;" *ngFor= "let y of alumnos" class="feed_news"><ion-label><h1>{{ y.nombre + "  " + y.apellido + " " + y.alumno_id}}</h1></ion-label><div  style="display: flex;"><ion-input style="font-size: large; color:rgb(0, 61, 106);" [(ngModel)]="data_update" type="text" placeholder="Actualiza los datos"></ion-input>    <ion-icon size="large" id="btn_send" (click) ="update()"  name="paper-plane-outline"></ion-icon></div>  <ion-label id="date">17:00 01-11-2021</ion-label></ion-card>' 
     data.innerHTML = HtmlString
+    
     
   }
   // guardar_datos(id, nombre , apellido, contrasena , isAuthenticate){
@@ -88,8 +97,30 @@ export class BlogPage implements OnInit {
   //   return datos
   // }
 
-  as(){
-    console.log("jasldkjalsk")
+  lapiz(id , nombre , apellido , contrasena , isAuthenticate){
+    this.data_lapiz =
+    {
+      "alumno_id" : id,
+       "nombre" : nombre,
+       "apellido" : apellido,
+       "contrasena" : contrasena,
+       "isAuthenticate" : isAuthenticate , 
+       "publicacion" : ""
+    }
+    console.log(this.data_lapiz)
+
+    let changeHtml = document.getElementById(id);
+    let code = '<div style="display : flex;" ><ion-input id = "datoUpdate" class="input_txt"  type="text" placeholder="Escribe acá tu nueva publicacion"></ion-input><ion-icon size="large" id="btn_send" (click) ="as()"  name="paper-plane-outline"> </ion-icon></div>';
+    changeHtml.innerHTML = code;
+    console.log(this.data_lapiz.alumno_id)
+    return this.data_lapiz;
+  }
+
+
+  ionChange( event : any){
+    console.log(event.detail.value)
+    console.log(event)
+
   }
 }
 
