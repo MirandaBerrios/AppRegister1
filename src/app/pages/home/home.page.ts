@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Usuario } from '../../model/Usuario';
-import { NivelEducacional } from '../../model/NivelEducacional';
-import { Persona } from '../../model/Persona';
 import { ToastController } from '@ionic/angular';
 import { Animation , AnimationController  } from '@ionic/angular';
 import { transition, animate, style, trigger, state} from '@angular/animations';
@@ -27,28 +25,7 @@ export class HomePage implements OnInit {
   userhtml = localStorage.getItem('nombreUsuario')
   public usuario: Usuario;
 
-  // public nivelesEducacionales: NivelEducacional[] = [
-  //   {id: 1, nombre: 'Básica Incompleta'},
-  //   {id: 2, nombre: 'Básica Completa'},
-  //   {id: 3, nombre: 'Media Incompleta'},
-  //   {id: 4, nombre: 'Media Completa'},
-  //   {id: 5, nombre: 'Superior Incompleta'},
-  //   {id: 6, nombre: 'Superior Completa'}
-  // ];
-
-  // public persona: Persona = new Persona();
-
-  /*
-    En el constructor del HomePage se ponen como parametros los siguientes objetos:
-      (1) activeroute (del tipo de dato ActivatedRoute) y router (del tipo de dato Router),
-      que se usarán para obtener los datos enviados por la página que invocó a "home".
-      (2) alertController (del tipo de dato AlertController), que se usará para mostrar
-      mensajes emergentes en la pantalla.
-
-    Nótese que los parámetros tuvieron que declararse con "private", y esto es necesario
-    para que los parámetros pasen a considerarse automáticamente como propiedades
-    de la clase "HomePage" y de este modo puedan usarse dentro de los otros métodos.
-   */
+  
    constructor(
         private activeroute: ActivatedRoute
       , private router: Router

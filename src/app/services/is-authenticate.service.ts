@@ -10,7 +10,7 @@ export class IsAuthenticateService {
   constructor(private user : Usuario , private storageServices : StorageService) { }
   loginUser(user){
     return new Promise((accept, reject)=>{
-      if(user.nombreUsuario == "mrgatita" && user.password == "1234"){
+      if(user.nombreUsuario == "mrgatita" && user.password == "ballena"){
         user.isActive = 1
         this.storageServices.saveStorage(user.isActive)
         localStorage.setItem("isAuthenticate" , "1")

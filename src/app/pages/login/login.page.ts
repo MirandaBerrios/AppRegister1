@@ -28,20 +28,11 @@ export class LoginPage implements OnInit {
     
     this.usuario = new Usuario();
     
-    // this.usuario.nombreUsuario = '';
-    // this.usuario.password = '';
+
 
     
   }
-  // Intentamos grabar usuarios en el local storage para posteriormente utilizarlos en el services 
-  // para autenticarlos y luego seguir con el flujo
-  // grabar_data(){
-  //   let usuario : Usuario = {
-  //     nombreUsuario: "mrgatita",
-  //     password : "1234"
-  //   }
-  //   this.storage.set("kevin" , usuario); 
-  // }
+  
 
   public ngOnInit():void {
      
@@ -59,30 +50,9 @@ export class LoginPage implements OnInit {
       
       
     })
-    // if(!this.validarUsuario(this.usuario)) {
-    //   return;
-    // }
-
-
-    // const navigationExtras: NavigationExtras = {
-    //   state: {
-    //     usuario: this.usuario
-    //   }
-    // };
-    // this.router.navigate(['/home'], navigationExtras); 
   }
 
-  // public validarUsuario(usuario: Usuario): boolean {
-
-  //   const mensajeError = usuario.validarUsuario();
-
-  //   if (mensajeError) {
-  //     this.mostrarMensaje(mensajeError);
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
+  
 
   /**
    * Muestra un toast al usuario

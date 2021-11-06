@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { Usuario } from 'src/app/model/Usuario';
 import { ToastController } from '@ionic/angular';
 import { $ } from 'protractor';
-var users = ["jorge" , "wolvering" ];
-var passwords = ["1111" , "2222"];
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-recuperar-clave',
   templateUrl: './recuperar-clave.page.html',
@@ -15,62 +15,53 @@ var passwords = ["1111" , "2222"];
 
 export class RecuperarClavePage implements OnInit {
   
-  public usuario: Usuario;
-  public show:boolean =false;
+   
+  user =  {
+    nombreUsuario : "mrgatita",
+    password : "ballena",
+    pista : "Mamífero más grande del mundo",
+    isActive : 0
+  };
 
-  constructor(private toastController: ToastController) {
-    this.usuario = new Usuario();
-    this.usuario.nombreUsuario = '';
-    this.usuario.password = '';
+  constructor(private toastController: ToastController , private usuario : Usuario , private router : Router) {
+    
     
    }
 
   ngOnInit() {
   }
   
-  // public showPass(): void {
-  //   this.show = false;
-  //   if(!this.validarUsuario(this.usuario)) {
-  //     return;
-  //   }
-  //   if(this.usuario.nombreUsuario === 'jorge'){
-  //   this.usuario.password = '1111';
-  //   this.show = true;
-
-  //   }
-  //   else if(this.usuario.nombreUsuario === 'wolvering'){
-  //     this.usuario.password = '2222';
-  //     this.show = true;
-  //   }
-
+  showPass(){
     
-  // }
+    console.log("asdasd" , this.user.pista)
+    if (this.user.nombreUsuario == "mrgatita" ) {
+      let msj = "Pista : " + this.user.pista
+     this.mostrarMensaje(msj, 4000);
+      
+    }else{
+      let pista = document.getElementById("pista")
+      let code = '<h2> usuario no registrado </h2>'
+      pista.innerHTML = code
+    }
+  }
 
-  // public validarUsuario(usuario: Usuario): boolean {
+  goHome(){
+    this.router.navigate(['/login'])
+  }
 
-  //   const mensajeError = usuario.validarNombreUsuario();
-
-  //   if (mensajeError) {
-  //     this.mostrarMensaje(mensajeError);
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
-  // /**
-  //  * Muestra un toast al usuario
-  //  *
-  //  * @param mensaje Mensaje a presentar al usuario
-  //  * @param duracion Duración el toast, este es opcional
-  //  */
-  // async mostrarMensaje(mensaje: string, duracion?: number) {
-  //   const toast = await this.toastController.create({
-  //       message: mensaje,
-  //       duration: duracion? duracion: 4000
-  //     });
-  //   toast.present();
-  // }
+  /**
+   * Muestra un toast al usuario
+   *
+   * @param mensaje Mensaje a presentar al usuario
+   * @param duracion Duración el toast, este es opcional
+   */
+  async mostrarMensaje(mensaje: string, duracion?: number) {
+    const toast = await this.toastController.create({
+        message: mensaje,
+        duration: duracion? duracion: 4000
+      });
+    toast.present();
+  }
 
 }
 

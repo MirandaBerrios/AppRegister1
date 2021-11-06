@@ -21,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'recuperar-clave',
-    loadChildren: () => import('./pages/recuperar-clave/recuperar-clave.module').then( m => m.RecuperarClavePageModule)
+    loadChildren: () => import('./pages/recuperar-clave/recuperar-clave.module').then( m => m.RecuperarClavePageModule),
+    canActivate:[LoginGuardService]
   },
   {
     path: 'scan',

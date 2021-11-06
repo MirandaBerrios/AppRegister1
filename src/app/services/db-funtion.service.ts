@@ -17,6 +17,6 @@ export class DbFuntionService {
 
   insertTable(db : SQLiteObject , user : Usuario){
   let sql = `INSERT INTO usuarios (user, password , question , isActive) VALUES (?,?,?,?)`
-  db.executeSql(sql ,[this.user.nombreUsuario,this.user.password, this.user.question, 0])
+  db.executeSql(sql ,[this.user.nombreUsuario,this.user.password, this.user.pista, 0])
   }
 }

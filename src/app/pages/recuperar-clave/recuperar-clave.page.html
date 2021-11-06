@@ -12,15 +12,19 @@
    <br><br><br>
    <ion-item>
     <ion-label position="left">Usuario</ion-label>
-    <ion-input type="text" [(ngModel)]="usuario.nombreUsuario" placeholder="usuario@duocuc.cl"></ion-input>
+    <ion-input type="text" [(ngModel)]="usuario.nombreUsuario" placeholder="Ingresa tu usuario"></ion-input>
   </ion-item>
+  <ion-text style="color: white">
+    <h1 id ="pista"></h1> 
+  </ion-text>
    <ion-button class="btn_password" (click)="showPass()" expand="block" fill="clear" shape="round" style="--background: #F9B901; color:black">
      recuperar contraseña
    </ion-button>
+   <ion-button class="btn_password" (click)="goHome()" expand="block" fill="clear" shape="round" style="--background: #F9B901; color:black">
+    regresar al home
+  </ion-button>
  </ion-card>
- <ion-item lines="none" class="showPass" *ngIf="show" >
-  <p class="center">tu clave es : {{usuario.password}}</p>
-</ion-item>
+ 
 </ion-content>
 
 
