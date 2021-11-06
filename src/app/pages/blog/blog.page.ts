@@ -22,8 +22,8 @@ export class BlogPage implements OnInit {
     "alumno_id" : "",
     "nombre" : "",
     "apellido" : "",
-    "contrasena" : "",
-    "isAuthenticate" : "",
+    "contrasena" : "1111",
+    "isAuthenticate" : "0",
     "publicacion" : ""
   }
 
@@ -117,9 +117,23 @@ export class BlogPage implements OnInit {
   }
 
 
-  ionChange( event : any){
-    console.log(event.detail.value)
-    console.log(event)
+  create(){
+    let publicacion = ((document.getElementById("publicacion") as HTMLInputElement).value); 
+    let user = localStorage.getItem("nombreUsuario")
+    console.log(publicacion , user)
+
+    fetch(
+      this.url + "/" , {
+     method: 'POST',
+     headers: new Headers({
+       'Content-Type': 'application/json', 'access-control-allow-origin': '*'
+     }),
+     body: JSON.stringify({"nombre" : user,"apellido" : "Duoc","contrasena" : "1111","isAuthenticate" : "0","publicacion" : publicacion})
+     }).then(()=>
+     location.reload());
+    
+    
+   
 
   }
 }

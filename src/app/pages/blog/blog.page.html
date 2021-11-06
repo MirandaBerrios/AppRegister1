@@ -51,7 +51,7 @@
   <ion-card class="send_coment">
     <ion-label><h1>@{{user}}</h1></ion-label>
     <div id="posted">
-      <ion-input
+      <ion-input id="publicacion"
         class="input_txt"
         type="text"
         placeholder="Escribe aquí tu aporte..."
@@ -59,7 +59,7 @@
       <ion-icon
         size="large"
         id="btn_send"
-        (click)="xd()"
+        (click)="create()"
         name="paper-plane-outline"
       ></ion-icon>
     </div>
