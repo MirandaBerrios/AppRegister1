@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Duoc Connect</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-card  >
+   <ion-card-header>
+     <ion-card-title class="ion-text-center" ><h1>Ingresa tus datos</h1></ion-card-title>
+   </ion-card-header>
+   <ion-item>
+    <ion-label position="fixed " enterkeyhint="next">Nombre</ion-label>
+    <ion-input type="text" [(ngModel)]="alumno.nombre" placeholder="nombre"></ion-input>
+   </ion-item>
+   <ion-item>
+    <ion-label position="fixed " enterkeyhint="next">Apellido</ion-label>
+    <ion-input type="text" [(ngModel)]="alumno.apellido" placeholder="nombre"></ion-input>
+   </ion-item>
+   <ion-item>
+    <ion-label position="fixed ">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="alumno.contrasena" placeholder="contraseña"></ion-input>
+   </ion-item>
+   <ion-item>
+    <ion-label position="fixed ">Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="alumno.re_contrasena" placeholder="repite tu contraseña"></ion-input>
+   </ion-item>
+   <ion-item>
+    <ion-label position="fixed" min="10">Pista</ion-label>
+    <ion-input type="text" [(ngModel)]="alumno.pista" placeholder="ingresa una pista"></ion-input>
+   </ion-item>
+
+
+   <ion-button class="btn_registrar" style="--background: #F9B901; color:black" (click)="registrar_alumno()" expand="block" fill="clear" shape="round">
+     registrar alumno
+   </ion-button>
+</ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small" > <h4> Mesa central (+56) 2 2999 3862</h4></ion-title>
+  </ion-toolbar>
+</ion-footer>

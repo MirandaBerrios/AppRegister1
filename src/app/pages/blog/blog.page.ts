@@ -30,7 +30,7 @@ export class BlogPage implements OnInit {
   constructor(public apicon : ApiConnectService , public router : Router ) {
     
    }
-    url = 'https://5b11-2803-c180-2002-97a2-4557-f964-9353-8450.ngrok.io'+'/postalumno';
+    url = 'https://ed9d-2803-c180-2002-97a2-10b4-e2f2-347b-c07a.ngrok.io'+'/postalumno';
   ngOnInit() {
     this.get_all_blog()
       

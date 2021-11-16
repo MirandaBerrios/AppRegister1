@@ -20,6 +20,11 @@ const routes: Routes = [
     canActivate:[LoginGuardService]
   },
   {
+    path: 'registro',
+    loadChildren : () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule),
+    canActivate:[LoginGuardService]
+  },
+  {
     path: 'recuperar-clave',
     loadChildren: () => import('./pages/recuperar-clave/recuperar-clave.module').then( m => m.RecuperarClavePageModule),
     canActivate:[LoginGuardService]
@@ -32,6 +37,11 @@ const routes: Routes = [
     path: 'blog',
     loadChildren: () => import('./pages/blog/blog.module').then( m => m.BlogPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
+  },
+
 ];
 
 @NgModule({

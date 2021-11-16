@@ -26,14 +26,20 @@
         Ingresar
       </ion-button>
       
-        <ion-text id="textlbl" class="ion-text-center , center">
+        <ion-text  class="ion-text-center , center ,textlbl">
           ¿Haz olvidado su contraseña? 
         </ion-text>
       
       <ion-item lines=none>
         <a class="recuperar_clave , ion-text-align-center" href="./../recuperar-clave">recuperar constraseña</a>
       </ion-item>
-    
+
+      <ion-text  class=" ion-text-center , center , textlbl">
+        ¿No tienes cuenta?
+      </ion-text>
+      <ion-button class="btn_ingresar" expand="block" style="--background: #F9B901; color:black" (click)="registrar()"  fill="solid" shape="round">
+        Registrar cuenta
+      </ion-button>
   </ion-card>
  
    

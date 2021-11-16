@@ -1,0 +1,30 @@
+ion-toolbar {
+    --background: rgb(0, 61, 106);
+    --color: white;
+}
+
+ion-card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    height: max-content;
+    width: 90%;
+    
+}
+
+ion-item{
+    font-size: large;
+    --border-style : none;
+}
+
+
+.btn_registrar{
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: medium;
+    font-weight: normal;
+}
+
+ion-content{
+    --background : rgb(255, 183, 27)
+}

@@ -45,11 +45,12 @@ export class LoginPage implements OnInit {
       }
       this.errorMessage = "";
       this.mostrarMensaje('¡Bienvenido!');
-      this.router.navigate(['/home'], navigationExtras);
-      
-      
-      
+      this.router.navigate(['/home'], navigationExtras);     
     })
+  }
+
+  public registrar(): void{
+    this.router.navigate(['/registro']);
   }
 
   
