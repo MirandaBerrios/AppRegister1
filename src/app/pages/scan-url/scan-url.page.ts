@@ -1,14 +1,15 @@
+
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ToastController, LoadingController, Platform } from '@ionic/angular';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { Router , NavigationExtras } from '@angular/router';
 import jsQR from 'jsqr';
- 
+
 @Component({
-  selector: 'app-scan',
-  templateUrl: 'scan.page.html',
-  styleUrls: ['scan.page.scss']
+  selector: 'app-scan-url',
+  templateUrl: './scan-url.page.html',
+  styleUrls: ['./scan-url.page.scss'],
 })
-export class ScanPage {
+export class ScanUrlPage {
   @ViewChild('video', { static: false }) video: ElementRef;
   @ViewChild('canvas', { static: false }) canvas: ElementRef;
   @ViewChild('fileinput', { static: false }) fileinput: ElementRef;
@@ -24,6 +25,7 @@ export class ScanPage {
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
     private plt: Platform,
+    private router : Router
     
   ) {
     const isInStandaloneMode = () =>
@@ -43,19 +45,11 @@ export class ScanPage {
   }
  
   // Helper functions
-  async showQrToast(duration?:number) {
+  async showQrToast(mensaje) {
     const toast = await this.toastCtrl.create({
-      message: `Abrir  ${this.scanResult}`,
+      message: mensaje,
       position: 'top',
-      duration: duration?duration:2000 ,
-      buttons: [
-        {
-          text: 'Abrir',
-          handler: () => {
-            window.open(this.scanResult, '_system', 'location=yes');
-          }
-        }
-      ]
+      duration: 2000 ,
     });
     toast.present();
   }
@@ -80,9 +74,11 @@ export class ScanPage {
    
     this.loading = await this.loadingCtrl.create({});
     await this.loading.present();
-   
+
+    
     this.videoElement.play();
     requestAnimationFrame(this.scan.bind(this));
+    
   }
    
   async scan() {
@@ -116,7 +112,18 @@ export class ScanPage {
       if (code) {
         this.scanActive = false;
         this.scanResult = code.data;
+        let scanUrl : any = code.data;
+        localStorage.setItem('url', scanUrl)
+        // const navigationExtras : NavigationExtras = { state : scanUrl}
+        
+      if( String(scanUrl).includes('https')){
+      this.router.navigate(['/blog'])
       
+      }else{
+      this.showQrToast('qr inválido'); 
+      }
+        
+        
       } else {
         if (this.scanActive) {
           requestAnimationFrame(this.scan.bind(this));
@@ -130,27 +137,4 @@ export class ScanPage {
     this.fileinput.nativeElement.click();
   }
    
-  handleFile(files: FileList) {
-    const file = files.item(0);
-   
-    var img = new Image();
-    img.onload = () => {
-      this.canvasContext.drawImage(img, 0, 0, this.canvasElement.width, this.canvasElement.height);
-      const imageData = this.canvasContext.getImageData(
-        0,
-        0,
-        this.canvasElement.width,
-        this.canvasElement.height
-      );
-      const code = jsQR(imageData.data, imageData.width, imageData.height, {
-        inversionAttempts: 'dontInvert'
-      });
-   
-      if (code) {
-        this.scanResult = code.data;
-        this.showQrToast();
-      }
-    };
-    img.src = URL.createObjectURL(file);
-  }
 }

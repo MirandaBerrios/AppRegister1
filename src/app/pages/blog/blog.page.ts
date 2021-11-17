@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { ApiConnectService } from 'src/app/services/api-connect.service';
 import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import { ThrowStmt } from '@angular/compiler';
 
 
@@ -27,13 +27,21 @@ export class BlogPage implements OnInit {
     "publicacion" : ""
   }
 
-  constructor(public apicon : ApiConnectService , public router : Router ) {
+   
+
+  constructor(public apicon : ApiConnectService , public router : Router  , public activeRoute : ActivatedRoute) {
     
    }
-    url = 'https://ed9d-2803-c180-2002-97a2-10b4-e2f2-347b-c07a.ngrok.io'+'/postalumno';
+    
+    url1;
+   
+  url= localStorage.getItem('url') + '/postalumno'
+ 
+    
   ngOnInit() {
+    
     this.get_all_blog()
-      
+    
   }
 
   delete(id){
@@ -84,14 +92,7 @@ export class BlogPage implements OnInit {
   }
 
 
-  modificar_html(){ 
-    
-    const data = document.getElementById('input_update');
-    let HtmlString = '<ion-card style="color: rgb(0, 61, 106) ;" *ngFor= "let y of alumnos" class="feed_news"><ion-label><h1>{{ y.nombre + "  " + y.apellido + " " + y.alumno_id}}</h1></ion-label><div  style="display: flex;"><ion-input style="font-size: large; color:rgb(0, 61, 106);" [(ngModel)]="data_update" type="text" placeholder="Actualiza los datos"></ion-input>    <ion-icon size="large" id="btn_send" (click) ="update()"  name="paper-plane-outline"></ion-icon></div>  <ion-label id="date">17:00 01-11-2021</ion-label></ion-card>' 
-    data.innerHTML = HtmlString
-    
-    
-  }
+ 
   // guardar_datos(id, nombre , apellido, contrasena , isAuthenticate){
   //   var datos = [ id , nombre , apellido ,contrasena , isAuthenticate] 
   //   return datos
@@ -110,7 +111,7 @@ export class BlogPage implements OnInit {
     console.log(this.data_lapiz)
 
     let changeHtml = document.getElementById(id);
-    let code = '<div style="display : flex;" ><ion-input id = "datoUpdate" class="input_txt"  type="text" placeholder="Escribe acá tu nueva publicacion"></ion-input><ion-icon size="large" id="btn_send" (click) ="as()"  name="paper-plane-outline"> </ion-icon></div>';
+    let code = '<div style="display : flex;" ><ion-input id = "datoUpdate" class="input_txt"  type="text" placeholder="Escribe acá tu nueva publicacion"></ion-input></div>';
     changeHtml.innerHTML = code;
     console.log(this.data_lapiz.alumno_id)
     return this.data_lapiz;

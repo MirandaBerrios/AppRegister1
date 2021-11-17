@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // Las clases Router y NavigationExtras son necesarias para que la página login le pase el nombre de usuario a la página home
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras , ActivatedRoute} from '@angular/router';
 // La clase ToastController sirve para mostrar mensajes emergente que duran un par de segundos
 import { ToastController } from '@ionic/angular';
-import { Usuario } from 'src/app/model/Usuario';
+import { Usuario , Alumno } from 'src/app/model/Usuario';
 import { IsAuthenticateService } from 'src/app/services/is-authenticate.service';
 import { Storage } from '@ionic/storage';
 import { StorageService } from 'src/app/services/storage.service';
@@ -15,6 +15,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class LoginPage implements OnInit {
  
   public usuario: Usuario;
+  public alumno : Alumno; 
  
   errorMessage : String = "";
   
@@ -23,15 +24,16 @@ export class LoginPage implements OnInit {
     private toastController: ToastController, 
     private authService : IsAuthenticateService,
     private storage : Storage,
-    private storageServices : StorageService) {
+    private storageServices : StorageService , 
+    private activeRoute : ActivatedRoute) {
 
-    
-    this.usuario = new Usuario();
-    
+    this.usuario = new Usuario();  
 
-
-    
+    this.activeRoute.queryParams.subscribe(params => {
+      this.alumno = this.router.getCurrentNavigation().extras.state.alumno;
+    })
   }
+  
   
 
   public ngOnInit():void {
@@ -39,14 +41,16 @@ export class LoginPage implements OnInit {
   }
 
   public ingresar(): void {
+   
     this.authService.loginUser(this.usuario).then(res => {
       const navigationExtras : NavigationExtras = {
         state:{ usuario : this.usuario}
       }
-      this.errorMessage = "";
       this.mostrarMensaje('¡Bienvenido!');
       this.router.navigate(['/home'], navigationExtras);     
     })
+    this.mostrarMensaje('Usuario incorrecto');
+   
   }
 
   public registrar(): void{

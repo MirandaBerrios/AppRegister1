@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { Platform } from '@ionic/angular';
 import { QRScanner } from '@ionic-native/qr-scanner';
-import { Usuario } from './model/Usuario';
+import { Usuario , Alumno } from './model/Usuario';
 import { Storage } from '@ionic/storage';
 import { StorageService } from './services/storage.service';
 import { DbFuntionService } from './services/db-funtion.service';
@@ -26,7 +26,7 @@ import { LoginGuardService } from './guards/login-guard.service';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Usuario, Storage, StorageService , DbFuntionService , IsAuthenticateService , SQLite , ApiConnectService , LoginGuardService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Usuario, Alumno, Storage, StorageService , DbFuntionService , IsAuthenticateService , SQLite , ApiConnectService , LoginGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

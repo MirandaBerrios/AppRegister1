@@ -41,6 +41,12 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  
+  {
+    path: 'scan-url',
+    loadChildren: () => import('./pages/scan-url/scan-url.module').then( m => m.ScanUrlPageModule)
+  },
+
 
 ];
 

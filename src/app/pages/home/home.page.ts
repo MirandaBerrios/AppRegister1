@@ -22,7 +22,8 @@ import { ApiConnectService } from 'src/app/services/api-connect.service';
 })
 
 export class HomePage implements OnInit {
-  userhtml = localStorage.getItem('nombreUsuario')
+  userhtml = localStorage.getItem('nombreUsuario');
+  nombre_alumno = localStorage.getItem('nombre_alumno');
   public usuario: Usuario;
 
   
@@ -34,7 +35,7 @@ export class HomePage implements OnInit {
       , private apicon : ApiConnectService       
       ) {
         
-        
+           
         
     // Se llama a la ruta activa y se obtienen sus parámetros mediante una subscripcion
     this.activeroute.queryParams.subscribe(params => {       // Utilizamos expresión lambda
@@ -89,7 +90,7 @@ public ngOnInit() {
   }
    
   public visitar_blog(): void {
-    this.router.navigate(['/blog']);
+    this.router.navigate(['/scan-url']);
     
 
   }

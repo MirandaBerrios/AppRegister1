@@ -16,12 +16,7 @@ import { Router } from '@angular/router';
 export class RecuperarClavePage implements OnInit {
   
    
-  user =  {
-    nombreUsuario : "mrgatita",
-    password : "ballena",
-    pista : "Mamífero más grande del mundo",
-    isActive : 0
-  };
+
 
   constructor(private toastController: ToastController , private usuario : Usuario , private router : Router) {
     
@@ -33,9 +28,10 @@ export class RecuperarClavePage implements OnInit {
   
   showPass(){
     
-    console.log("asdasd" , this.user.pista)
-    if (this.user.nombreUsuario == "mrgatita" ) {
-      let msj = "Pista : " + this.user.pista
+    console.log()
+    if (this.usuario.nombreUsuario == String(localStorage.getItem('usuario')) ) {
+      let pista = localStorage.getItem('pista');
+      let msj = "Pista : " + pista
      this.mostrarMensaje(msj, 4000);
       
     }else{

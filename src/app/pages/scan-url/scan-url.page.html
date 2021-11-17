@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title style="margin-top: 1em;" class="ion-text-center">
+      Escanea el QR de tu sala
+    </ion-title>
+    <ion-item id= "instruccion" class="ion-text-center">
+      <ion-text>
+        <h3>Serás dirigido directamente al blog de tu sala para ver los post tuyos y los demás alumnos</h3>
+      </ion-text>
+    </ion-item>
+    
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+  
+ 
+  <ion-button id="camScan" class="buttonScann" expand="full" (click)="startScan()">
+    <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+    Escanear con cámara
+  </ion-button>
+ 
+  <ion-button class="buttonScann" expand="full" (click)="reset()" color="warning" *ngIf="scanResult">
+    <ion-icon class="buttonScann" slot="start" name="refresh"></ion-icon>
+    regresar
+  </ion-button>
+ 
+  <!-- Shows our camera stream -->
+  <video id="videoQr" #video [hidden]="!scanActive" width="100%"></video>
+ 
+  <!-- Used to render the camera stream images -->
+  <canvas #canvas hidden></canvas>
+ 
+  <!-- Stop our scanner preview if active -->
+  <ion-button class="buttonScann" expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Detener registro
+  </ion-button>
+ 
+  <ion-card id="ScanResult" *ngIf="scanResult">
+    <ion-card-header>
+      <ion-card-title id="titulo">Resultado del scaner</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ scanResult }}
+    </ion-card-content>
+  </ion-card>
+ 
+</ion-content>
